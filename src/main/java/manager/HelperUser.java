@@ -28,4 +28,14 @@ public class HelperUser extends HelperBase {
     public void clickOkButton() {
         click(By.xpath("//button[text()='Ok']"));
     }
+
+    public boolean isLogged() {
+
+        return
+                isElementPresent(By.xpath("//a[text()=' Logout ']"));
+    }
+
+    public void logout() {
+        click(By.xpath("//a[text()=' Logout ']"));
+    }
 }
