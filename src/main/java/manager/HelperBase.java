@@ -24,21 +24,30 @@ public class HelperBase {
         if (text != null) element.sendKeys(text);
     }
 
-    public String getMessage(){
+    public String getMessage() {
         pause(5000);
         return wd.findElement(By.cssSelector(".dialog-container>h2")).getText();
     }
 
-public void pause(int time){
-    try {
-        Thread.sleep(time);
-    } catch (InterruptedException e) {
-        throw new RuntimeException(e);
+    public void pause(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
-}
 
     public boolean isElementPresent(By locator) {
         List<WebElement> list = wd.findElements(locator);
         return !list.isEmpty();
-    };
+    }
+
+    ;
+
+    public boolean isYallaButtonNotActive() {
+        boolean res = isElementPresent(By.cssSelector("button[disabled]"));
+        WebElement element = wd.findElement(By.cssSelector("button[type='submit']"));
+        boolean result = element.isEnabled();
+        return res && !result;
+    }
 }
